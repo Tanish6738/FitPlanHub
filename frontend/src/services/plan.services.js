@@ -1,7 +1,8 @@
 import axios from '../axios/axios';
 
-const getAllPlans = async () => {
-    const response = await axios.get('/plans');
+const getAllPlans = async (trainerId = null) => {
+    const url = trainerId ? `/plans?trainerId=${trainerId}` : '/plans';
+    const response = await axios.get(url);
     return response.data;
 };
 

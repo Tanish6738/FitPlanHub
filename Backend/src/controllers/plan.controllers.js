@@ -21,9 +21,12 @@ export const createPlan = async (req, res) => {
 
 export const getAllPlans = async (req, res) => {
   try {
-    const plans = await Plan.find()
-      .select("title price trainerID")
-      .populate("trainerID", "name");
+    const { trainerId } = req.query;
+    const query = trainerId ? { trainerID: trainerId } : {};
+
+    const plans = await Plan.find(query)
+.select("title price description durationInDays trainerID")
+      .populate("trainerID", "name email");
     
     res.status(200).json(plans);
   } catch (error) {
