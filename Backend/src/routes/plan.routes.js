@@ -1,10 +1,5 @@
 import express from "express";
-import {
-  createPlan,
-  getAllPlans,
-  getPlanDetails,
-  updatePlan,
-  deletePlan,
+import {createPlan,getAllPlans,getPlanDetails,updatePlan,deletePlan,
 } from "../controllers/plan.controllers.js";
 import authMiddleware from "../middleware/auth.middleware.js";
 import { requireTrainer } from "../middleware/role_check.middleware.js";

@@ -20,13 +20,11 @@ const RoleSelector = ({ selectedRole, onChange }) => {
           type="button"
           onClick={() => onChange('trainer')}
           className={`py-3 px-4 text-center rounded-md border transition-all duration-200 ${
-            selectedRole === 'trainer'
-              ? 'bg-black text-white border-black ring-2 ring-offset-2 ring-gray-500'
+            selectedRole === 'trainer'? 'bg-black text-white border-black ring-2 ring-offset-2 ring-gray-500'
               : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
           }`}
         >
-          Trainer
-        </button>
+          Trainer </button>
       </div>
     </div>
   );

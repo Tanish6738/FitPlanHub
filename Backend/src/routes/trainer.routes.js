@@ -1,9 +1,5 @@
 import express from "express";
-import { 
-    followTrainer, 
-    unfollowTrainer, 
-    getFollowedTrainers, 
-    getTrainerProfile 
+import { followTrainer, unfollowTrainer, getFollowedTrainers, getTrainerProfile 
 } from "../controllers/trainer.controllers.js";
 import authMiddleware from "../middleware/auth.middleware.js";
 import { requireUser } from "../middleware/role_check.middleware.js";

@@ -34,8 +34,7 @@ const PlanForm = ({ initialData, onSubmit, isLoading, buttonText = 'Save Plan' }
     e.preventDefault();
     onSubmit(formData);
   };
-
-  return (
+return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <Input
         label="Plan Title"
@@ -55,7 +54,7 @@ const PlanForm = ({ initialData, onSubmit, isLoading, buttonText = 'Save Plan' }
         rows={4}
         required
       />
-      
+    
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Input
           label="Price ($)"

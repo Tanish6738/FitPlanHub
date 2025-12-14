@@ -1,0 +1,591 @@
+{
+	"info": {
+		"_postman_id": "fitplanhub-collection-id",
+		"name": "FitPlanHub API",
+		"description": "Collection for testing FitPlanHub API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"token\", jsonData.token);",
+									"}",
+									"if (jsonData.user && jsonData.user.id) {",
+									"    pm.environment.set(\"userId\", jsonData.user.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"user@example.com\",\n    \"password\": \"password123\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Trainer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"token\", jsonData.token);",
+									"}",
+									"if (jsonData.user && jsonData.user.id) {",
+									"    pm.environment.set(\"trainerId\", jsonData.user.id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test Trainer\",\n    \"email\": \"trainer@example.com\",\n    \"password\": \"password123\",\n    \"role\": \"trainer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"token\", jsonData.token);",
+									"    console.log(\"User Token set\");",
+									"}",
+									"if (jsonData.user && jsonData.user.id) {",
+									"    pm.environment.set(\"userId\", jsonData.user.id);",
+									"    console.log(\"User ID set\");",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Trainer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.token) {",
+									"    pm.environment.set(\"token\", jsonData.token);",
+									"    console.log(\"Trainer Token set\");",
+									"}",
+									"if (jsonData.user && jsonData.user.id) {",
+									"    pm.environment.set(\"trainerId\", jsonData.user.id);",
+									"    console.log(\"Trainer ID set\");",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trainer@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData._id) {",
+									"    pm.environment.set(\"userId\", jsonData._id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plans",
+			"item": [
+				{
+					"name": "Create Plan (Trainer)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData._id) {",
+									"    pm.environment.set(\"planId\", jsonData._id);",
+									"    console.log(\"Plan ID set: \" + jsonData._id);",
+									"}",
+                                    "// Fallback if response structure is different (e.g. { plan: { _id: ... } })",
+                                    "if (jsonData.plan && jsonData.plan._id) {",
+                                    "    pm.environment.set(\"planId\", jsonData.plan._id);",
+                                    "    console.log(\"Plan ID set: \" + jsonData.plan._id);",
+                                    "}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Advanced HIIT\",\n    \"description\": \"High Intensity Interval Training for pros\",\n    \"price\": 49.99,\n    \"durationInDays\": 30\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plans",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Plans",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plans",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Plan Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plans/{{planId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plans",
+								"{{planId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Plan (Trainer)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Advanced HIIT v2\",\n    \"description\": \"Updated High Intensity Interval Training\",\n    \"price\": 59.99,\n    \"durationInDays\": 45\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/plans/{{planId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plans",
+								"{{planId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Plan (Trainer)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/plans/{{planId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"plans",
+								"{{planId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "Subscribe to Plan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.subscription && jsonData.subscription._id) {",
+									"    pm.environment.set(\"subscriptionId\", jsonData.subscription._id);",
+									"    console.log(\"Subscription ID set\");",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/{{planId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								"{{planId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Subscriptions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subscriptions/my",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subscriptions",
+								"my"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trainers",
+			"item": [
+				{
+					"name": "Get Trainer Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trainers/{{trainerId}}/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trainers",
+								"{{trainerId}}",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Follow Trainer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trainers/{{trainerId}}/follow",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trainers",
+								"{{trainerId}}",
+								"follow"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Followed Trainers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trainers/following",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trainers",
+								"following"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow Trainer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trainers/{{trainerId}}/unfollow",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trainers",
+								"{{trainerId}}",
+								"unfollow"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feed",
+			"item": [
+				{
+					"name": "Get User Feed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/feed",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"feed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "planId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "trainerId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

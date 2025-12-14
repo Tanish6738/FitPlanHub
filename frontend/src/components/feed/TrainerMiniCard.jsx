@@ -12,13 +12,13 @@ const TrainerMiniCard = ({ trainer }) => {
         ) : (
           <span className="text-sm font-bold text-gray-600 group-hover:text-black">
             {trainer.name?.charAt(0).toUpperCase()}
-          </span>
+    </span>
         )}
       </div>
       <div className="ml-3">
         <p className="text-sm font-medium text-gray-900 group-hover:text-black group-hover:underline decoration-1 underline-offset-2">
           {trainer.name}
-        </p>
+</p>
         <p className="text-xs text-gray-500">Trainer</p>
       </div>
     </Link>
