@@ -5,6 +5,7 @@ import Auth from '../pages/Auth.jsx'
 import Login from '../components/login.jsx'
 import Register from '../components/register.jsx'
 import Landing from '../pages/Landing.jsx'
+import Profile from '../pages/Profile.jsx'
 
 const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
       <Route path="/auth" element={<Auth />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   )
 }
