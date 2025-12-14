@@ -23,16 +23,14 @@ const Navbar = () => {
               <span className="text-2xl font-bold tracking-tighter">FitPlanHub</span>
             </Link>
             
-            {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center space-x-6">
-              <Link to="/plans" className={`text-sm font-medium transition-colors py-1 ${isActive('/plans')}`}>
-                Plans
-              </Link>
-              
+            <div className="hidden md:flex items-center space-x-6">              
               {user && (
                 <>
                   {user.role === 'user' && (
                     <>
+                                  <Link to="/plans" className={`text-sm font-medium transition-colors py-1 ${isActive('/plans')}`}>
+                Plans
+              </Link>
                       <Link to="/feed" className={`text-sm font-medium transition-colors py-1 ${isActive('/feed')}`}>
                         Feed
                       </Link>
@@ -58,7 +56,6 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            {/* Desktop Auth/Profile */}
             <div className="hidden md:flex items-center space-x-4">
               {user ? (
                 <Link to="/profile">
@@ -83,7 +80,6 @@ const Navbar = () => {
               )}
             </div>
 
-            {/* Mobile Menu Button */}
             <div className="md:hidden flex items-center">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -102,7 +98,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black border-t border-gray-800">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
