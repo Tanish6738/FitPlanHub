@@ -12,7 +12,7 @@ import Button from '../components/ui/Button';
 const PlansGrid = ({ plans, loading, error }) => {
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[400px]">
+      <div className="flex justify-center items-center ">
         <Loader size="large" />
       </div>
     );
@@ -93,7 +93,7 @@ const Landing = () => {
     <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
 
-      <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex flex-col md:flex-row justify-between items-end border-b border-gray-100 pb-6 mb-8">
           <div>
             <h2 className="text-3xl font-bold text-black tracking-tight">Latest Drops</h2>
@@ -117,7 +117,7 @@ const Landing = () => {
         </div>
       </main>
 
-      <Footer />
+      
     </div>
   );
 };
