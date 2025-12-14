@@ -18,7 +18,9 @@ export const UserProvider = ({ children }) => {
             }
         } catch (error) {
             console.error("Error fetching user profile:", error);
-            localStorage.removeItem('token');
+            if (error.response && error.response.status === 401) {
+                localStorage.removeItem('token');
+            }
             setUser(null);
         } finally {
             setLoading(false);
