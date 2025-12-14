@@ -1,8 +1,9 @@
 import User from '../models/user.model.js';
 import { generateToken } from '../utils/generate-token.js';
 
-export const signup = async (req, res) => {
+export const register = async (req, res) => {
     try {
+        console.log("Registering user:", req.body);
         const { name, email, password, role } = req.body;
 
         const existingUser = await User.findOne({ email });
@@ -25,6 +26,7 @@ export const signup = async (req, res) => {
             }
         });
     } catch (error) {
+        console.error("Registration error:", error);
         res.status(500).json({ message: 'Signup failed', error: error.message });
     }
 };
